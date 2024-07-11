@@ -6,8 +6,9 @@ session = Session()
 cache = Cache(size=1000)
 
 # define database and tables
+from py4web.core import required_folder
 db = DAL(
-    "sqlite://storage.db", folder=os.path.join(os.path.dirname(__file__), "databases")
+    "sqlite://storage.db", folder=required_folder(os.path.dirname(__file__), "databases")
 )
 db.define_table("todo", Field("info"))
 db.commit()
